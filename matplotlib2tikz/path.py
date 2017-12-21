@@ -157,7 +157,7 @@ def draw_pathcollection(data, obj):
     return data, content
 
 
-def get_draw_options(data, ec, fc):
+def get_draw_options(data, ec, fc, ls=None):
     '''Get the draw options for a given (patch) object.
     '''
     draw_options = []
@@ -173,6 +173,18 @@ def get_draw_options(data, ec, fc):
         if fc_rgba[3] != 0.0:
             # Don't draw if it's invisible anyways.
             draw_options.append('fill=%s' % col)
+
+    if ls is None:
+        ls_type = 'solid'
+    else:
+        if len(ls) == 2:
+            if ls[1][0] < ls[1][1]:
+                ls_type = 'dotted'
+            else:
+                ls_type = 'dashed'
+        else:
+            ls_type = 'dashdotted'
+        draw_options.append('%s ' % ls_type)
 
     # handle transparency
     if ec is not None and fc is not None and \

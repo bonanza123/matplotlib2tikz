@@ -43,8 +43,13 @@ def draw_patchcollection(data, obj):
     except IndexError:
         face_color = None
 
+    try:
+        line_style = obj.get_linestyle()[0]
+    except IndexError:
+        line_style = None
+
     data, draw_options = mypath.get_draw_options(
-            data, edge_color, face_color
+            data, edge_color, face_color, line_style
             )
     for path in obj.get_paths():
         data, cont = mypath.draw_path(
