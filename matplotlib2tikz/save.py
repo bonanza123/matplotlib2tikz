@@ -34,7 +34,8 @@ def get_tikz_code(
         extra_tikzpicture_parameters=None,
         addplot_inherit_global_parameters=False,
         dpi=None,
-        show_info=True
+        show_info=True,
+        smooth=False
         ):
     '''Main function. Here, the recursion into the image starts and the
     contents are picked up. The actual file gets written in this routine.
@@ -148,6 +149,7 @@ def get_tikz_code(
     data['axis environment'] = axis_environment
     data['show_info'] = show_info
     data['addplot_inherit_global_parameters'] = addplot_inherit_global_parameters
+    data['smooth'] = smooth
     # rectangle_legends is used to keep track of which rectangles have already
     # had \addlegendimage added. There should be only one \addlegenimage per
     # bar chart data series.

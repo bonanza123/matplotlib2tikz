@@ -198,4 +198,7 @@ def get_draw_options(data, ec, fc, ls=None):
     # TODO Use those properties
     # linewidths = obj.get_linewidths()
 
+    if data['smooth']:
+        draw_options.append('smooth')
+
     return data, draw_options
